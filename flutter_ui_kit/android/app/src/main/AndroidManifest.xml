@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fitness_ui_kit">
+    package="com.android.goactive">
    <application
         android:label="GoActive"
         android:icon="@mipmap/ic_launcher">

@@ -1,4 +1,4 @@
-package com.example.fitness_ui_kit
+package com.android.goactive
 
 import io.flutter.embedding.android.FlutterActivity
 

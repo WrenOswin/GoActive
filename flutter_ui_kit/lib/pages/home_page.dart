@@ -250,14 +250,10 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(30)),
                 child: Stack(
                   children: [
-                    Container(
-                      width: double.infinity,
-                      child: LineChart(activityData()),
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(20),
                       child: Text(
-                        "Heart Rate",
+                        "Steps",
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
