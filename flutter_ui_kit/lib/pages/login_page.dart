@@ -38,19 +38,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     Text(
-                      "Hey there,",
-                      style: TextStyle(fontSize: 16),
+                      "GoActive",
+                      style: TextStyle(fontSize: 30),
                     ),
                     SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Welcome Back",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 30,
+                      height: 150,
                     ),
                     Container(
                       height: 50,

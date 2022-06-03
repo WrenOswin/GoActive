@@ -1,4 +1,6 @@
 import 'package:fitness_ui_kit/data/latest_workout.dart';
+import 'package:fitness_ui_kit/pages/foot_counter.dart';
+import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:fitness_ui_kit/widget/chart_activity_status.dart';
 import 'package:fitness_ui_kit/widget/chart_sleep.dart';
@@ -8,7 +10,6 @@ import 'package:fitness_ui_kit/widget/water_intake_timeline.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -34,25 +35,29 @@ class _HomePageState extends State<HomePage> {
     if (_result == null)
       return Text("");
     else if (_result! < 19)
-      return Text("You are Underweight",style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: white),);
+      return Text(
+        "You are Underweight",
+        style:
+            TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
+      );
     else if (_result! >= 19 && _result! <= 24)
-      return Text("You have Optimal BMI",style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: white),);
+      return Text(
+        "You have Optimal BMI",
+        style:
+            TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
+      );
     else if (_result! >= 25 && _result! <= 29)
-      return Text("You are Overweight",style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: white),);
+      return Text(
+        "You are Overweight",
+        style:
+            TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
+      );
     else
-      return Text("You are Obese",style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: white),);
+      return Text(
+        "You are Obese",
+        style:
+            TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
+      );
   }
 
   @override
@@ -138,6 +143,7 @@ class _HomePageState extends State<HomePage> {
                                   controller: _heightController,
                                   keyboardType: TextInputType.number,
                                   decoration: const InputDecoration(
+                                    hintStyle: TextStyle(color: Colors.white),
                                     hintText: 'Height in cm',
                                     contentPadding: EdgeInsets.all(10),
                                   )),
@@ -146,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                                 keyboardType: TextInputType.number,
                                 decoration: const InputDecoration(
                                   hintText: 'Weight in kg',
+                                  hintStyle: TextStyle(color: Colors.white),
                                   contentPadding: EdgeInsets.all(10),
                                 ),
                               ),
@@ -249,19 +256,17 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     color: secondary.withOpacity(0.5),
                     borderRadius: BorderRadius.circular(30)),
-                child: Stack(
+                child: Column(
                   children: [
-                    Container(
-                      width: double.infinity,
-                      child: LineChart(activityData()),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(
-                        "Steps",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: thirdColor),
+                      onPressed: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Pedometer()));
+                      }),
+                      child: Text("Track Steps"),
                     )
                   ],
                 ),
