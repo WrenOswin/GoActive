@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 30),
                     ),
                     SizedBox(
-                      height: 150,
+                      height: 100,
                     ),
                     Container(
                       height: 50,
@@ -102,6 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                                 obscureText: !_passwordVisible,
                               ),
                             ),
+                            SizedBox(
+                              height: 20,
+                            ),
                             IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -117,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Text(
                       "Forgot your password?",
@@ -191,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

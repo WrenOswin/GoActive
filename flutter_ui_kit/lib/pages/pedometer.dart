@@ -74,6 +74,30 @@ class _PedometerState extends State<Pedometer> {
                         steps.toString(),
                         style: TextStyle(color: Colors.white, fontSize: 40),
                       ),
+                      Text(
+                        'Miles: ',
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      Text(
+                        miles.toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      Text(
+                        'Duration: ',
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      Text(
+                        duration.toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      Text(
+                        'Calories ',
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      Text(
+                        calories.toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
                       // dashboard card
                     ],
                   ),
