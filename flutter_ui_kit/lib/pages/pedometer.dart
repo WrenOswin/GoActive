@@ -4,6 +4,7 @@ import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fitness_ui_kit/data/latest_workout.dart';
 
 class Pedometer extends StatefulWidget {
   const Pedometer({Key? key}) : super(key: key);
@@ -114,6 +115,70 @@ class _PedometerState extends State<Pedometer> {
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        width: 400,
+                        height: 200,
+                        decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                  spreadRadius: 20,
+                                  blurRadius: 10,
+                                  color: black.withOpacity(0.01),
+                                  offset: Offset(0, 1))
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: List.generate(weekly.length, (index) {
+                              return Column(
+                                children: [
+                                  Flexible(
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                          width: 20,
+                                          height: 150,
+                                          decoration: BoxDecoration(
+                                              color: bgTextField,
+                                              borderRadius:
+                                                  BorderRadius.circular(30)),
+                                        ),
+                                        Positioned(
+                                          bottom: 0,
+                                          child: Container(
+                                            width: 20,
+                                            height:
+                                                30.0 * (weekly[index]['count']),
+                                            decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                    colors: weekly[index]
+                                                        ['color']),
+                                                borderRadius:
+                                                    BorderRadius.circular(30)),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    weekly[index]['day'],
+                                    style: TextStyle(fontSize: 13),
+                                  )
+                                ],
+                              );
+                            }),
+                          ),
+                        ),
                       ),
 
                       // dashboard card
