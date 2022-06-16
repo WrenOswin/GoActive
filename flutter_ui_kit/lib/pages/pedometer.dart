@@ -68,36 +68,54 @@ class _PedometerState extends State<Pedometer> {
                       ),
                       Text(
                         'Steps taken: ',
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
+
                       Text(
                         steps.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      Text(
-                        'Miles: ',
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      SizedBox(
+                        height: 40,
                       ),
-                      Text(
-                        miles.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 80,
+                          ),
+                          Text(
+                            'Miles: ',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          Text(
+                            miles.toString(),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          SizedBox(
+                            width: 40,
+                          ),
+                          Text(
+                            'Duration: ',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          Text(
+                            duration.toString(),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          SizedBox(
+                            width: 40,
+                          ),
+                          Text(
+                            'Calories: ',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          Text(
+                            calories.toString(),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Duration: ',
-                        style: TextStyle(color: Colors.white, fontSize: 40),
-                      ),
-                      Text(
-                        duration.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 40),
-                      ),
-                      Text(
-                        'Calories ',
-                        style: TextStyle(color: Colors.white, fontSize: 40),
-                      ),
-                      Text(
-                        calories.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 40),
-                      ),
+
                       // dashboard card
                     ],
                   ),
