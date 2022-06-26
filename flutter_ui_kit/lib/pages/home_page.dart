@@ -21,40 +21,51 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _heightController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
   double? _result;
-
+  double? difference;
+  double? heightSquare;
+  double? weight;
   void calculateBMI() {
     double height = double.parse(_heightController.text) / 100;
-    double weight = double.parse(_weightController.text);
-    double heightSquare = height * height;
+    weight = double.parse(_weightController.text);
+    heightSquare = height * height;
     setState(() {
-      _result = weight / heightSquare;
+      _result = (weight! / heightSquare!);
     });
+
+    if (_result! >= 25)
+      calculateDiff(24.8);
+    else if (_result! <= 18.4) calculateDiff(18.6);
+  }
+
+  void calculateDiff(double r) {
+    difference = (r * heightSquare!) - weight!;
+    difference = difference?.abs();
   }
 
   Widget getBMItext() {
     if (_result == null)
       return Text("");
-    else if (_result! < 19)
+    else if (_result! < 18.5)
       return Text(
-        "You are Underweight",
+        "You are Underweight, need to gain ${difference?.toStringAsFixed(2)} kg to reach Optimal range",
         style:
             TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
       );
-    else if (_result! >= 19 && _result! <= 24)
+    else if (_result! >= 18.5 && _result! <= 24.9)
       return Text(
         "You have Optimal BMI",
         style:
             TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
       );
-    else if (_result! >= 25 && _result! <= 29)
+    else if (_result! >= 25 && _result! <= 29.9)
       return Text(
-        "You are Overweight",
+        "You are Overweight, need to lose ${difference?.toStringAsFixed(2)} kg to reach Optimal range",
         style:
             TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
       );
     else
       return Text(
-        "You are Obese",
+        "You are Obese, need to lose ${difference?.toStringAsFixed(2)} kg to reach Optimal range",
         style:
             TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
       );

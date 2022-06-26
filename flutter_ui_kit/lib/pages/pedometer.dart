@@ -68,7 +68,7 @@ class _PedometerState extends State<Pedometer> {
                         height: kToolbarHeight,
                       ),
                       Text(
-                        'Steps taken: ',
+                        '👟',
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
 
@@ -81,7 +81,7 @@ class _PedometerState extends State<Pedometer> {
                       ),
 
                       Text(
-                        'Calories: ',
+                        '🔥',
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                       Text(
