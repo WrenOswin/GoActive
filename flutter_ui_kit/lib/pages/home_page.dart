@@ -1,5 +1,4 @@
 import 'package:fitness_ui_kit/data/latest_workout.dart';
-import 'package:fitness_ui_kit/pages/foot_counter.dart';
 import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:fitness_ui_kit/widget/chart_activity_status.dart';
@@ -101,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         height: 5,
                       ),
                       Text(
-                        "Wren",
+                        "User",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
