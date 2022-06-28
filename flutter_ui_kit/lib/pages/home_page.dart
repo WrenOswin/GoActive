@@ -1,5 +1,6 @@
 import 'package:fitness_ui_kit/data/latest_workout.dart';
 import 'package:fitness_ui_kit/pages/pedometer.dart';
+import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:fitness_ui_kit/widget/chart_activity_status.dart';
 import 'package:fitness_ui_kit/widget/chart_sleep.dart';
@@ -277,6 +278,16 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => const Pedometer()));
                       }),
                       child: Text("Track Steps"),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: thirdColor),
+                      onPressed: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Pulse()));
+                      }),
+                      child: Text("Pulse Rate"),
                     )
                   ],
                 ),
