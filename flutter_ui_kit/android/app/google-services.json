@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1002921598721",
-    "project_id": "goactive-cb403",
-    "storage_bucket": "goactive-cb403.appspot.com"
+    "project_number": "397748947217",
+    "project_id": "goactive-a1396",
+    "storage_bucket": "goactive-a1396.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1002921598721:android:57c789133be4802bef4500",
+        "mobilesdk_app_id": "1:397748947217:android:57e734eb2804a4c16624b0",
         "android_client_info": {
           "package_name": "com.example.goactive"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1002921598721-lfm1tpp04c0rm1qcq00e05i9nachi3al.apps.googleusercontent.com",
+          "client_id": "397748947217-euad15im34c0ghn787auqejp6tdmffkm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAokF17qY80Y6EHhN5A0BwJzo54K1IxlqA"
+          "current_key": "AIzaSyAt2TsgdcOu71YnUZNz5BW-2R12fvE_tVs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1002921598721-lfm1tpp04c0rm1qcq00e05i9nachi3al.apps.googleusercontent.com",
+              "client_id": "397748947217-euad15im34c0ghn787auqejp6tdmffkm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
