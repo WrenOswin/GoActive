@@ -3,7 +3,6 @@ import 'package:fitness_ui_kit/pages/today_target_detail_page.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings setting) {
-  final Map<String, dynamic> args = new Map<String, dynamic>();
 
   switch (setting.name) {
     case '/root_app':
