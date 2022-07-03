@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
