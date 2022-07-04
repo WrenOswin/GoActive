@@ -1,9 +1,9 @@
-
 import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   double? difference;
   double? heightSquare;
   double? weight;
+  int cups = 0;
   void calculateBMI() {
     double height = double.parse(_heightController.text) / 100;
     weight = double.parse(_weightController.text);
@@ -34,6 +35,19 @@ class _HomePageState extends State<HomePage> {
   void calculateDiff(double r) {
     difference = (r * heightSquare!) - weight!;
     difference = difference?.abs();
+  }
+
+  void incrementCups() {
+    setState(() {
+      if(cups < 13)
+      cups += 1;
+    });
+  }
+
+  void decrementCups() {
+    setState(() {
+      if (cups > 0) cups -= 1;
+    });
   }
 
   Widget getBMItext() {
@@ -203,19 +217,105 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 30,
               ),
+              Container(
+                alignment: Alignment.center,
+                height: 350,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  gradient: LinearGradient(colors: [secondary, primary]),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: Container(
+                          width: (size.width),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Water Intake (Drink 13 cups(250ml) of water a day)",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: white),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          shape: CircleBorder(),
+                                          primary: thirdColor,
+                                          padding: const EdgeInsets.all(30)),
+                                      child: const Text(
+                                        "-",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: decrementCups,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/water.png',
+                                      height: 110,
+                                      width: 110,
+                                    ),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          shape: CircleBorder(),
+                                          primary: thirdColor,
+                                          padding: const EdgeInsets.all(30)),
+                                      child: const Text(
+                                        "+",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: incrementCups,
+                                    ),
+                                  ]),
+                              Container(
+                                  alignment: Alignment.topCenter,
+                                  margin: EdgeInsets.all(20),
+                                  child: LinearProgressIndicator(
+                                    value: cups/13,
+                                    valueColor:
+                                        new AlwaysStoppedAnimation<Color>(
+                                            thirdColor),
+                                    minHeight: 10,
+                                  )),
+                              Center(
+                                child: Text(
+                                  '$cups out of 13',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: white),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 15,
               ),
-              Container(
-                width: double.infinity,
-                height: 300,
-                decoration: BoxDecoration(
-                    color: secondary.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(30)),
+              Center(
                 child: Column(
                   children: [
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: thirdColor),
+                      style: ElevatedButton.styleFrom(
+                        primary: thirdColor,
+                        minimumSize: const Size(200, 50),
+                        maximumSize: const Size(200, 50),
+                      ),
                       onPressed: (() {
                         Navigator.push(
                             context,
@@ -224,8 +324,15 @@ class _HomePageState extends State<HomePage> {
                       }),
                       child: Text("Track Steps"),
                     ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: thirdColor),
+                      style: ElevatedButton.styleFrom(
+                        primary: thirdColor,
+                        minimumSize: const Size(200, 50),
+                        maximumSize: const Size(200, 50),
+                      ),
                       onPressed: (() {
                         Navigator.push(
                             context,
@@ -233,12 +340,43 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => const Pulse()));
                       }),
                       child: Text("Pulse Rate"),
-                    )
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: thirdColor,
+                        minimumSize: const Size(200, 50),
+                        maximumSize: const Size(200, 50),
+                      ),
+                      onPressed: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Pulse()));
+                      }),
+                      child: Text("Diet"),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: thirdColor,
+                        minimumSize: const Size(200, 50),
+                        maximumSize: const Size(200, 50),
+                      ),
+                      onPressed: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Pulse()));
+                      }),
+                      child: Text("Pills"),
+                    ),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 30,
               ),
             ],
           ),

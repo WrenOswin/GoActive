@@ -1,6 +1,8 @@
+import 'package:fitness_ui_kit/authenthication_service.dart';
+import 'package:fitness_ui_kit/pages/home_page.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:line_icons/line_icons.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,10 +14,19 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var _passwordVisible;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   void initState() {
     super.initState();
     _passwordVisible = false;
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -63,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Flexible(
                               child: TextField(
+                                controller: emailController,
                                 cursorColor: black.withOpacity(0.5),
                                 decoration: InputDecoration(
                                     hintText: "Email",
@@ -95,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Flexible(
                               child: TextField(
+                                controller: passwordController,
                                 cursorColor: black.withOpacity(0.5),
                                 decoration: InputDecoration(
                                     hintText: "Password",
@@ -122,101 +135,20 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      "Forgot your password?",
-                      style: TextStyle(
-                          fontSize: 13, decoration: TextDecoration.underline),
-                    )
                   ],
                 ),
               ),
-
-              // login button and social login
-              Container(
-                  height: (size.height - 60) * 0.5,
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, "/root_app", (route) => false);
-                        },
-                        child: Container(
-                          height: 50,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              gradient:
-                                  LinearGradient(colors: [secondary, primary]),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.arrow_forward_sharp,
-                                color: white,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Login",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: white,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Flexible(
-                            child: Divider(
-                              thickness: 0.8,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text("Or"),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Flexible(
-                            child: Divider(
-                              thickness: 0.8,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                border:
-                                    Border.all(color: black.withOpacity(0.1))),
-                            child: Center(
-                              child: SvgPicture.asset(
-                                "assets/images/google_icon.svg",
-                                width: 20,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ))
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()));
+                    //context.read<AuthenticationService>().signIn(
+                    //email: emailController.text.trim(),
+                    //password: passwordController.text.trim());
+                  },
+                  child: Text("Sign in")),
             ],
           ),
         ),
