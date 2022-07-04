@@ -3,7 +3,6 @@ import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,8 +38,7 @@ class _HomePageState extends State<HomePage> {
 
   void incrementCups() {
     setState(() {
-      if(cups < 13)
-      cups += 1;
+      if (cups < 13) cups += 1;
     });
   }
 
@@ -77,6 +75,15 @@ class _HomePageState extends State<HomePage> {
         style:
             TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: white),
       );
+  }
+
+  Widget getWatertext() {
+    if (cups == 13)
+      return Text("DAILY GOAL REACHED!",
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.bold, color: white));
+    else
+      return Text(" ");
   }
 
   @override
@@ -236,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Water Intake (Drink 13 cups(250ml) of water a day)",
+                                "Water Intake (13 cups(250ml) minimum per day)",
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
@@ -281,11 +288,12 @@ class _HomePageState extends State<HomePage> {
                                   alignment: Alignment.topCenter,
                                   margin: EdgeInsets.all(20),
                                   child: LinearProgressIndicator(
-                                    value: cups/13,
+                                    value: cups / 13,
                                     valueColor:
                                         new AlwaysStoppedAnimation<Color>(
                                             thirdColor),
                                     minHeight: 10,
+                                    backgroundColor: white,
                                   )),
                               Center(
                                 child: Text(
@@ -296,6 +304,9 @@ class _HomePageState extends State<HomePage> {
                                       color: white),
                                 ),
                               ),
+                              Center(
+                                child: getWatertext(),
+                              )
                             ],
                           ),
                         ),
