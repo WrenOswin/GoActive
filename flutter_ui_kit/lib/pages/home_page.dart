@@ -1,8 +1,10 @@
+import 'package:fitness_ui_kit/charts/waterchart.dart';
 import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -226,7 +228,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 alignment: Alignment.center,
-                height: 350,
+                height: 500,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -263,7 +265,9 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(30)),
                                       child: const Text(
                                         "-",
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       onPressed: decrementCups,
                                     ),
@@ -279,7 +283,9 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(30)),
                                       child: const Text(
                                         "+",
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       onPressed: incrementCups,
                                     ),
@@ -306,7 +312,8 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Center(
                                 child: getWatertext(),
-                              )
+                              ),
+                              BarChartSample3(),
                             ],
                           ),
                         ),

@@ -1,9 +1,10 @@
 import 'dart:math';
+import 'package:fitness_ui_kit/charts/stepchart.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fitness_ui_kit/data/latest_workout.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class Pedometer extends StatefulWidget {
   const Pedometer({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _PedometerState extends State<Pedometer> {
   int steps = 0;
   double previousDistacne = 0.0;
   double distance = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +36,8 @@ class _PedometerState extends State<Pedometer> {
             y = snapShort.data!.y;
             z = snapShort.data!.z;
             distance = getValue(x, y, z);
-            if (distance > 6) {
-              steps++;
+            if (distance > 7.5) {
+              if (steps < 6000) steps++;
             }
             calories = calculateCalories(steps);
             duration = calculateDuration(steps);
@@ -63,95 +65,52 @@ class _PedometerState extends State<Pedometer> {
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      SizedBox(
-                        height: kToolbarHeight,
-                      ),
-                      Text(
-                        '👟',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-
-                      Text(
-                        steps.toString(),
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-
-                      Text(
-                        '🔥',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      Text(
-                        calories.toStringAsFixed(3),
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Container(
-                        width: 400,
+                       SizedBox(
                         height: 200,
-                        decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                  spreadRadius: 20,
-                                  blurRadius: 10,
-                                  color: black.withOpacity(0.01),
-                                  offset: Offset(0, 1))
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: List.generate(weekly.length, (index) {
-                              return Column(
-                                children: [
-                                  Flexible(
-                                    child: Stack(
-                                      children: [
-                                        Container(
-                                          width: 20,
-                                          height: 150,
-                                          decoration: BoxDecoration(
-                                              color: bgTextField,
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                        ),
-                                        Positioned(
-                                          bottom: 0,
-                                          child: Container(
-                                            width: 20,
-                                            height:
-                                                30.0 * (weekly[index]['count']),
-                                            decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                    colors: weekly[index]
-                                                        ['color']),
-                                                borderRadius:
-                                                    BorderRadius.circular(30)),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    weekly[index]['day'],
-                                    style: TextStyle(fontSize: 13),
-                                  )
-                                ],
-                              );
-                            }),
-                          ),
-                        ),
                       ),
-
+                      getGoalText(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SfRadialGauge(
+                        axes: <RadialAxis>[
+                          RadialAxis(
+                              minimum: 0,
+                              maximum: 100,
+                              showLabels: false,
+                              showTicks: false,
+                              axisLineStyle: AxisLineStyle(
+                                thickness: 0.1,
+                                cornerStyle: CornerStyle.bothCurve,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                thicknessUnit: GaugeSizeUnit.factor,
+                              ),
+                              pointers: <GaugePointer>[
+                                RangePointer(
+                                  value: steps / 6000,
+                                  cornerStyle: CornerStyle.bothCurve,
+                                  width: 0.2,
+                                  sizeUnit: GaugeSizeUnit.factor,
+                                )
+                              ],
+                              annotations: <GaugeAnnotation>[
+                                GaugeAnnotation(
+                                    positionFactor: 0.1,
+                                    angle: 90,
+                                    widget: Text(
+                                      steps.toStringAsFixed(0) + ' / 6000',
+                                      style: TextStyle(
+                                          fontSize: 24,
+                                          color: white,
+                                          fontWeight: FontWeight.bold),
+                                    ))
+                              ])
+                        ],
+                      ),
+                      StepChart(),
+                      SizedBox(
+                        height: 40,
+                      ),
                       // dashboard card
                     ],
                   ),
@@ -198,5 +157,12 @@ class _PedometerState extends State<Pedometer> {
   double calculateCalories(int steps) {
     double caloriesValue = (steps * 0.0566);
     return caloriesValue;
+  }
+
+  Widget getGoalText() {
+    if (steps == 6000)
+      return Text("You have reached your daily goal!");
+    else
+      return Text("Daily goal not completed!", style: TextStyle(fontWeight: FontWeight.bold, color: white, fontSize: 15),);
   }
 }

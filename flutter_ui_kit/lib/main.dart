@@ -12,7 +12,10 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(RootRestorationScope(
+      restorationId: 'root',
+      child: MyApp(),
+    ),);
 }
 
 class MyApp extends StatelessWidget {

@@ -139,16 +139,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()));
-                    //context.read<AuthenticationService>().signIn(
-                    //email: emailController.text.trim(),
-                    //password: passwordController.text.trim());
-                  },
-                  child: Text("Sign in")),
+                style: ElevatedButton.styleFrom(primary: thirdColor),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage()));
+                  //context.read<AuthenticationService>().signIn(
+                  //email: emailController.text.trim(),
+                  //password: passwordController.text.trim());
+                },
+                child: Text("Sign in"),
+              ),
             ],
           ),
         ),
