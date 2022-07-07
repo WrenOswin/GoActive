@@ -6,7 +6,11 @@ class AuthenticationService {
       {required AuthenticationService create});
 
   Stream<User?> get authstateChanges => _firebaseAuth.authStateChanges();
-  
+
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
+  }
+
   Future<String?> signIn(
       {required String email, required String password}) async {
     try {

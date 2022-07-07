@@ -1,10 +1,13 @@
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:fitness_ui_kit/authenthication_service.dart';
 import 'package:fitness_ui_kit/charts/waterchart.dart';
 import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -126,15 +129,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: black.withOpacity(0.03),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Center(
-                      child: Icon(LineIcons.bell),
-                    ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: thirdColor),
+                    onPressed: () {
+                      context.read<AuthenticationService>().signOut();
+                    },
+                    child: Text("Sign out"),
                   )
                 ],
               ),
