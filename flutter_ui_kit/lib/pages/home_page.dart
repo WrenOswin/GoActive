@@ -23,6 +23,8 @@ class _HomePageState extends State<HomePage> {
   double? heightSquare;
   double? weight;
   int cups = 0;
+  var dbcups = FirebaseFirestore.instance.collection("Cups");
+  var dbbmi = FirebaseFirestore.instance.collection("BMI");
   void calculateBMI() {
     double height = double.parse(_heightController.text) / 100;
     weight = double.parse(_weightController.text);
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _result = (weight! / heightSquare!);
     });
-
+    dbbmi.doc("SCxXRadmGCxin5WYzlru").set({"bmi": _result});
     if (_result! >= 25)
       calculateDiff(24.8);
     else if (_result! <= 18.4) calculateDiff(18.6);
@@ -228,7 +230,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 alignment: Alignment.center,
-                height: 500,
+                height: 600,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -312,6 +314,16 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Center(
                                 child: getWatertext(),
+                              ),
+                              Center(
+                                child: ElevatedButton(
+                                  onPressed: () => dbcups
+                                      .doc("mAqCMvqFB7nN4JJ2xDs6")
+                                      .set({"cups": cups}),
+                                  child: Text("Done"),
+                                  style: ElevatedButton.styleFrom(
+                                      primary: thirdColor),
+                                ),
                               ),
                               BarChartSample3(),
                             ],

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_ui_kit/charts/stepchart.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _PedometerState extends State<Pedometer> {
   int steps = 0;
   double previousDistacne = 0.0;
   double distance = 0.0;
+  var dbsteps = FirebaseFirestore.instance.collection("Steps");
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +67,7 @@ class _PedometerState extends State<Pedometer> {
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                       SizedBox(
+                      SizedBox(
                         height: 200,
                       ),
                       getGoalText(),
@@ -106,6 +108,13 @@ class _PedometerState extends State<Pedometer> {
                                     ))
                               ])
                         ],
+                      ),
+                      ElevatedButton(
+                        onPressed: () => dbsteps
+                            .doc("prgNBd3Scjp8iRjvDXea")
+                            .set({"steps": steps}),
+                        child: Text("Done"),
+                        style: ElevatedButton.styleFrom(primary: thirdColor),
                       ),
                       StepChart(),
                       SizedBox(
@@ -163,6 +172,10 @@ class _PedometerState extends State<Pedometer> {
     if (steps == 6000)
       return Text("You have reached your daily goal!");
     else
-      return Text("Daily goal not completed!", style: TextStyle(fontWeight: FontWeight.bold, color: white, fontSize: 15),);
+      return Text(
+        "Daily goal not completed!",
+        style:
+            TextStyle(fontWeight: FontWeight.bold, color: white, fontSize: 15),
+      );
   }
 }
