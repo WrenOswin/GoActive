@@ -1,12 +1,12 @@
-import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:fitness_ui_kit/authenthication_service.dart';
 import 'package:fitness_ui_kit/charts/waterchart.dart';
+import 'package:fitness_ui_kit/medicine/medicineapp.dart';
+import 'package:fitness_ui_kit/medicine/screens/home/home.dart';
 import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -384,26 +384,9 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Pulse()));
+                                builder: (context) => MedicineApp()));
                       }),
-                      child: Text("Diet"),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: thirdColor,
-                        minimumSize: const Size(200, 50),
-                        maximumSize: const Size(200, 50),
-                      ),
-                      onPressed: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Pulse()));
-                      }),
-                      child: Text("Pills"),
+                      child: Text("Medicine"),
                     ),
                   ],
                 ),
