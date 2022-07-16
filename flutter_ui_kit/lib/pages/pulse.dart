@@ -44,7 +44,7 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
   void dispose() {
     _timer.cancel();
     _toggled = false;
-    _disposeController();
+    //_disposeController();
     Wakelock.disable();
     _animationController.stop();
     _animationController.dispose();
@@ -192,7 +192,7 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
   }
 
   void _untoggle() {
-    _disposeController();
+    //_disposeController();
     Wakelock.disable();
     _animationController.stop();
     _animationController.value = 0.0;
@@ -202,10 +202,10 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
     });
   }
 
-  void _disposeController() {
-    _controller!.dispose();
-    _controller = null;
-  }
+  //void _disposeController() {
+    //_controller!.dispose();
+    //_controller = null;
+  //}
 
   Future<void> _initController() async {
     List _cameras = await availableCameras();
