@@ -1,4 +1,5 @@
 import 'package:fitness_ui_kit/authenthication_service.dart';
+import 'package:fitness_ui_kit/calorie/calmain.dart';
 import 'package:fitness_ui_kit/charts/waterchart.dart';
 import 'package:fitness_ui_kit/medicine/medicineapp.dart';
 import 'package:fitness_ui_kit/medicine/screens/home/home.dart';
@@ -387,6 +388,23 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => MedicineApp()));
                       }),
                       child: Text("Medicine"),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: thirdColor,
+                        minimumSize: const Size(200, 50),
+                        maximumSize: const Size(200, 50),
+                      ),
+                      onPressed: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CalorieTrackerApp()));
+                      }),
+                      child: Text("Calories"),
                     ),
                   ],
                 ),
