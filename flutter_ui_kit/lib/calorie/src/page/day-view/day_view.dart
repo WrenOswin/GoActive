@@ -181,109 +181,108 @@ class _DayViewState extends State<DayViewScreen> {
   }
 
   Widget _showAddFoodForm() {
-    return SingleChildScrollView(
-    
-    child: Expanded(
-      child: Form(
-      key: _addFoodKey,
-      child: Column(children: [
-        TextFormField(
-          key: const Key('add_food_modal_food_name_field'),
-          decoration: const InputDecoration(
-              labelText: "Name *", hintText: "Please enter food name"),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter the food name";
-            }
-            return null;
-          },
-          onChanged: (value) {
-            addFoodTrack.food_name = value;
+    return Flexible(
+      child: SingleChildScrollView(
+          child: Expanded(
+              child: Form(
+        key: _addFoodKey,
+        child: Column(children: [
+          TextFormField(
+            key: const Key('add_food_modal_food_name_field'),
+            decoration: const InputDecoration(
+                labelText: "Name *", hintText: "Please enter food name"),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter the food name";
+              }
+              return null;
+            },
+            onChanged: (value) {
+              addFoodTrack.food_name = value;
 
-            // addFood.calories = value;
-          },
-        ),
-        TextFormField(
-          key: const Key('add_food_modal_calorie_field'),
-          decoration: const InputDecoration(
-              labelText: "Calories *",
-              hintText: "kcal"),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter a calorie amount";
-            }
-            return null;
-          },
-          keyboardType: TextInputType.number,
-          onChanged: (value) {
-            try {
-              addFoodTrack.calories = int.parse(value);
-            } catch (e) {
-              // return "Please enter numeric values"
-              addFoodTrack.calories = 0;
-            }      // addFood.calories = value;
-          },
-        ),
-        TextFormField(
-          key: const Key('add_food_modal_carbs_field'),
-          decoration: const InputDecoration(
-              labelText: "Carbs *", hintText: "g"),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter a carbs amount";
-            }
-            return null;
-          },
-          keyboardType: TextInputType.number,
-          onChanged: (value) {
-            try {
-              addFoodTrack.carbs = int.parse(value);
-            } catch (e) {
-              addFoodTrack.carbs = 0;
-            }
-          },
-        ),
-        TextFormField(
-          key: const Key('add_food_modal_protein_field'),
-          decoration: const InputDecoration(
-              labelText: "Protein *",
-              hintText: "g"),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter a protein amount";
-            }
-            return null;
-          },
-          keyboardType: TextInputType.number,
-          onChanged: (value) {
-            try {
-              addFoodTrack.protein = int.parse(value);
-            } catch (e) {
-              addFoodTrack.protein = 0;
-            }
-          },
-        ),
-        TextFormField(
-          key: const Key('add_food_modal_fat_field'),
-          decoration: const InputDecoration(
-              labelText: "Fat *", hintText: "g"),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter a fat amount";
-            }
-            return null;
-          },
-          keyboardType: TextInputType.number,
-          onChanged: (value) {
-            try {
-              addFoodTrack.fat = int.parse(value);
-            } catch (e) {
-              addFoodTrack.fat = 0;
-            }
-          },
-        ),
-      ]),
-    )));
+              // addFood.calories = value;
+            },
+          ),
+          TextFormField(
+            key: const Key('add_food_modal_calorie_field'),
+            decoration: const InputDecoration(
+                labelText: "Calories *", hintText: "kcal"),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter a calorie amount";
+              }
+              return null;
+            },
+            keyboardType: TextInputType.number,
+            onChanged: (value) {
+              try {
+                addFoodTrack.calories = int.parse(value);
+              } catch (e) {
+                // return "Please enter numeric values"
+                addFoodTrack.calories = 0;
+              } // addFood.calories = value;
+            },
+          ),
+          TextFormField(
+            key: const Key('add_food_modal_carbs_field'),
+            decoration:
+                const InputDecoration(labelText: "Carbs *", hintText: "g"),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter a carbs amount";
+              }
+              return null;
+            },
+            keyboardType: TextInputType.number,
+            onChanged: (value) {
+              try {
+                addFoodTrack.carbs = int.parse(value);
+              } catch (e) {
+                addFoodTrack.carbs = 0;
+              }
+            },
+          ),
+          TextFormField(
+            key: const Key('add_food_modal_protein_field'),
+            decoration:
+                const InputDecoration(labelText: "Protein *", hintText: "g"),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter a protein amount";
+              }
+              return null;
+            },
+            keyboardType: TextInputType.number,
+            onChanged: (value) {
+              try {
+                addFoodTrack.protein = int.parse(value);
+              } catch (e) {
+                addFoodTrack.protein = 0;
+              }
+            },
+          ),
+          TextFormField(
+            key: const Key('add_food_modal_fat_field'),
+            decoration:
+                const InputDecoration(labelText: "Fat *", hintText: "g"),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter a fat amount";
+              }
+              return null;
+            },
+            keyboardType: TextInputType.number,
+            onChanged: (value) {
+              try {
+                addFoodTrack.fat = int.parse(value);
+              } catch (e) {
+                addFoodTrack.fat = 0;
+              }
+            },
+          ),
+        ]),
+      ))),
+    );
   }
 
   Widget _showUserAmount() {
