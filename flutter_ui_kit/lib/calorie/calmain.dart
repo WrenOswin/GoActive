@@ -1,10 +1,8 @@
 
 import 'package:fitness_ui_kit/calorie/src/page/day-view/day_view.dart';
 import 'package:fitness_ui_kit/calorie/src/providers/theme_notifier.dart';
-import 'package:fitness_ui_kit/calorie/src/services/shared_preference_service.dart';
 import 'package:flutter/material.dart';
 import 'src/page/history/history_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:fitness_ui_kit/calorie/helpers/theme.dart';
 import 'package:fitness_ui_kit/calorie/routes/router.dart';

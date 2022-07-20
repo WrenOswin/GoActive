@@ -6,6 +6,7 @@ import 'package:fitness_ui_kit/medicine/screens/home/home.dart';
 import 'package:fitness_ui_kit/pages/pedometer.dart';
 import 'package:fitness_ui_kit/pages/pulse.dart';
 import 'package:fitness_ui_kit/theme/colors.dart';
+import 'package:fitness_ui_kit/water/water.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
@@ -229,112 +230,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 30,
               ),
-              Container(
-                alignment: Alignment.center,
-                height: 600,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  gradient: LinearGradient(colors: [secondary, primary]),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: Container(
-                          width: (size.width),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Water Intake (13 cups(250ml) minimum per day)",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: white),
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          shape: CircleBorder(),
-                                          primary: thirdColor,
-                                          padding: const EdgeInsets.all(30)),
-                                      child: const Text(
-                                        "-",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      onPressed: decrementCups,
-                                    ),
-                                    Image.asset(
-                                      'assets/images/water.png',
-                                      height: 110,
-                                      width: 110,
-                                    ),
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          shape: CircleBorder(),
-                                          primary: thirdColor,
-                                          padding: const EdgeInsets.all(30)),
-                                      child: const Text(
-                                        "+",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      onPressed: incrementCups,
-                                    ),
-                                  ]),
-                              Container(
-                                  alignment: Alignment.topCenter,
-                                  margin: EdgeInsets.all(20),
-                                  child: LinearProgressIndicator(
-                                    value: cups / 13,
-                                    valueColor:
-                                        new AlwaysStoppedAnimation<Color>(
-                                            thirdColor),
-                                    minHeight: 10,
-                                    backgroundColor: white,
-                                  )),
-                              Center(
-                                child: Text(
-                                  '$cups out of 13',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: white),
-                                ),
-                              ),
-                              Center(
-                                child: getWatertext(),
-                              ),
-                              Center(
-                                child: ElevatedButton(
-                                  onPressed: () => dbcups
-                                      .doc("mAqCMvqFB7nN4JJ2xDs6")
-                                      .set({"cups": cups}),
-                                  child: Text("Done"),
-                                  style: ElevatedButton.styleFrom(
-                                      primary: thirdColor),
-                                ),
-                              ),
-                              BarChartSample3(),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              
               SizedBox(
                 height: 15,
               ),
@@ -371,6 +267,23 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => const Pulse()));
                       }),
                       child: Text("Pulse Rate"),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: thirdColor,
+                        minimumSize: const Size(200, 50),
+                        maximumSize: const Size(200, 50),
+                      ),
+                      onPressed: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Water()));
+                      }),
+                      child: Text("Water"),
                     ),
                     SizedBox(
                       height: 15,
