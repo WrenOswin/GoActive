@@ -1,12 +1,13 @@
-
+import 'package:fitness_ui_kit/calorie/src/page/caltrack/caltrak_screen.dart';
 import 'package:fitness_ui_kit/calorie/src/page/day-view/day_view.dart';
 import 'package:fitness_ui_kit/calorie/src/providers/theme_notifier.dart';
+import 'package:fitness_ui_kit/calorie/trackmain.dart';
+import 'package:fitness_ui_kit/main.dart';
 import 'package:flutter/material.dart';
 import 'src/page/history/history_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:fitness_ui_kit/calorie/helpers/theme.dart';
 import 'package:fitness_ui_kit/calorie/routes/router.dart';
-
 
 Future<void> main() async {
   runApp(const CalorieTrackerApp());
@@ -108,31 +109,40 @@ class _Homepag extends State<Homepag> with SingleTickerProviderStateMixin {
         .push(MaterialPageRoute(builder: (context) => DayViewScreen()));
   }
 
+  void onClickCalorieLimitButton(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => Hiveapp()));
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         body: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 200,
-            ),
-            const ListTile(
-                title: Text("Calorie Tracking",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold))),
-            ElevatedButton(
-                onPressed: () {
-                  onClickDayViewScreenButton(context);
-                },
-                child: const Text("Day View Screen")),
-            ElevatedButton(
-                onPressed: () {
-                  onClickHistoryScreenButton(context);
-                },
-                child: const Text("History Screen")),
-          ],
-        ));
+      children: <Widget>[
+        SizedBox(
+          height: 200,
+        ),
+        const ListTile(
+            title: Text("Calorie Tracking",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold))),
+        ElevatedButton(
+            onPressed: () {
+              onClickCalorieLimitButton(context);
+            },
+            child: const Text("Calorie Limit")),
+        ElevatedButton(
+            onPressed: () {
+              onClickDayViewScreenButton(context);
+            },
+            child: const Text("Day View Screen")),
+        ElevatedButton(
+            onPressed: () {
+              onClickHistoryScreenButton(context);
+            },
+            child: const Text("History Screen")),
+      ],
+    ));
   }
 }
 

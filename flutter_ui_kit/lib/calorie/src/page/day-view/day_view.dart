@@ -172,7 +172,7 @@ class _DayViewState extends State<DayViewScreen> {
 
   Widget _showAmountHad() {
     return Scaffold(
-      resizeToAvoidBottomInset:false,
+      resizeToAvoidBottomInset: false,
       body: Column(children: <Widget>[
         _showAddFoodForm(),
         _showUserAmount(),
@@ -346,7 +346,9 @@ class _DayViewState extends State<DayViewScreen> {
               icon: const Icon(Icons.arrow_right, size: 25.0),
               color: _rightArrowColor,
               onPressed: () {
-                if (today.difference(_value).compareTo(const Duration(days: 1)) ==
+                if (today
+                        .difference(_value)
+                        .compareTo(const Duration(days: 1)) ==
                     -1) {
                   setState(() {
                     _rightArrowColor = const Color(0xffC1C1C1);
@@ -355,7 +357,9 @@ class _DayViewState extends State<DayViewScreen> {
                   setState(() {
                     _value = _value.add(const Duration(days: 1));
                   });
-                  if (today.difference(_value).compareTo(const Duration(days: 1)) ==
+                  if (today
+                          .difference(_value)
+                          .compareTo(const Duration(days: 1)) ==
                       -1) {
                     setState(() {
                       _rightArrowColor = const Color(0xffC1C1C1);
@@ -594,7 +598,7 @@ class FoodTrackTile extends StatelessWidget {
                     height: 8,
                     width: 8,
                     decoration: const BoxDecoration(
-                      color:  Color(PROTEIN_COLOR),
+                      color: Color(PROTEIN_COLOR),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -690,7 +694,8 @@ class FoodTrackTile extends StatelessWidget {
             child: LinearProgressIndicator(
               value: caloriesValue,
               backgroundColor: const Color(0xffEDEDED),
-              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xff5FA55A)),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(Color(0xff5FA55A)),
             ),
           ),
           Text('      ' + ((caloriesValue) * 100).toStringAsFixed(0) + '%'),
@@ -714,7 +719,8 @@ class FoodTrackTile extends StatelessWidget {
             child: LinearProgressIndicator(
               value: carbsValue,
               backgroundColor: const Color(0xffEDEDED),
-              valueColor: const AlwaysStoppedAnimation<Color>(const Color(CARBS_COLOR)),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(const Color(CARBS_COLOR)),
             ),
           ),
           Text('      ' + ((carbsValue) * 100).toStringAsFixed(0) + '%'),
@@ -738,7 +744,8 @@ class FoodTrackTile extends StatelessWidget {
             child: LinearProgressIndicator(
               value: proteinValue,
               backgroundColor: const Color(0xffEDEDED),
-              valueColor: const AlwaysStoppedAnimation<Color>(Color(PROTEIN_COLOR)),
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(Color(PROTEIN_COLOR)),
             ),
           ),
           Text('      ' + ((proteinValue) * 100).toStringAsFixed(0) + '%'),
