@@ -115,7 +115,7 @@ class _HomeState extends State<Home> {
                   height: deviceHeight * 0.01,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.0),
+                  padding: EdgeInsets.symmetric(horizontal: 0.0),
                   child: Calendar(chooseDay,_daysList),
                 ),
                 SizedBox(height: deviceHeight * 0.03),
@@ -124,7 +124,7 @@ class _HomeState extends State<Home> {
                         width: double.infinity,
                         height: 100,
                         child: 
-                          Text("No Medicines added")
+                          Text("No Medicines added",)
                       )
                     : MedicinesList(dailyPills,setData,flutterLocalNotificationsPlugin)
               ],
