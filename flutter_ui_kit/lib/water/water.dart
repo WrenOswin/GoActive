@@ -6,6 +6,12 @@ import 'package:fitness_ui_kit/water/bloc/water_bloc.dart';
 import 'package:fitness_ui_kit/water/domain/repository/water_repository.dart';
 import 'package:fitness_ui_kit/water/ui/home/home_page.dart';
 import 'package:fitness_ui_kit/water/ui/theme/app_theme.dart';
+import 'package:path/path.dart';
+
+
+Future<void> main() async {
+  runApp(Water());
+}
 
 class Water extends StatefulWidget {
   @override
@@ -32,7 +38,7 @@ class _WaterState extends State<Water> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => WaterBloc(_repository),
+          create: (Context) => WaterBloc(_repository),
           lazy: false,
         ),
       ],

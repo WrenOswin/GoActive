@@ -230,94 +230,148 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 30,
               ),
-              
               SizedBox(
                 height: 15,
               ),
               Center(
                 child: Column(
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: thirdColor,
-                        minimumSize: const Size(200, 50),
-                        maximumSize: const Size(200, 50),
+                    Row(children: [
+                      Material(
+                        elevation: 8,
+                        borderRadius: BorderRadius.circular(28),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Pedometer()));
+                          }, // Handle your callback.
+                          splashColor: Colors.green,
+                          child: Ink(
+                            height: 160,
+                            width: 160,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/Step.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      onPressed: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Pedometer()));
-                      }),
-                      child: Text("Track Steps"),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Material(
+                        elevation: 8,
+                        borderRadius: BorderRadius.circular(28),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Pulse()));
+                          }, // Handle your callback.
+                          splashColor: Colors.green,
+                          child: Ink(
+                            height: 160,
+                            width: 160,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/heart.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                    SizedBox(
+                      height: 20,
                     ),
+                    Row(children: [
+                      Material(
+                        elevation: 8,
+                        borderRadius: BorderRadius.circular(28),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Water()));
+                          }, // Handle your callback.
+                          splashColor: Colors.green,
+                          child: Ink(
+                            height: 160,
+                            width: 160,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage('assets/images/waterbottle.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Material(
+                        elevation: 8,
+                        borderRadius: BorderRadius.circular(28),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MedicineApp()));
+                          }, // Handle your callback.
+                          splashColor: Colors.green,
+                          child: Ink(
+                            height: 160,
+                            width: 160,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/medicine.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
                     SizedBox(
                       height: 15,
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: thirdColor,
-                        minimumSize: const Size(200, 50),
-                        maximumSize: const Size(200, 50),
+                    Material(
+                      elevation: 8,
+                      borderRadius: BorderRadius.circular(28),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CalorieTrackerApp()));
+                        }, // Handle your callback.
+                        splashColor: Colors.green,
+                        child: Ink(
+                          height: 160,
+                          width: 160,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/burger.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
-                      onPressed: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Pulse()));
-                      }),
-                      child: Text("Pulse Rate"),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: thirdColor,
-                        minimumSize: const Size(200, 50),
-                        maximumSize: const Size(200, 50),
-                      ),
-                      onPressed: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Water()));
-                      }),
-                      child: Text("Water"),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: thirdColor,
-                        minimumSize: const Size(200, 50),
-                        maximumSize: const Size(200, 50),
-                      ),
-                      onPressed: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MedicineApp()));
-                      }),
-                      child: Text("Medicine"),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: thirdColor,
-                        minimumSize: const Size(200, 50),
-                        maximumSize: const Size(200, 50),
-                      ),
-                      onPressed: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CalorieTrackerApp()));
-                      }),
-                      child: Text("Calories"),
                     ),
                   ],
                 ),

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fitness_ui_kit/water/domain/model/water_input.dart';
 import 'package:fitness_ui_kit/water/domain/model/water_settings.dart';
