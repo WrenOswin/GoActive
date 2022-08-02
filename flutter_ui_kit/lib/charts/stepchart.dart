@@ -15,7 +15,7 @@ class _BarChart extends StatelessWidget {
         barGroups: barGroups,
         gridData: FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
-        maxY: 20,
+        maxY: 7000,
       ),
     );
   }
@@ -121,7 +121,7 @@ class _BarChart extends StatelessWidget {
           x: 0,
           barRods: [
             BarChartRodData(
-              toY: 8,
+              toY: 2500,
               gradient: _barsGradient,
             )
           ],
@@ -131,7 +131,7 @@ class _BarChart extends StatelessWidget {
           x: 1,
           barRods: [
             BarChartRodData(
-              toY: 10,
+              toY: 3000,
               gradient: _barsGradient,
             )
           ],
@@ -141,7 +141,7 @@ class _BarChart extends StatelessWidget {
           x: 2,
           barRods: [
             BarChartRodData(
-              toY: 9,
+              toY: 1000,
               gradient: _barsGradient,
             )
           ],
@@ -151,7 +151,7 @@ class _BarChart extends StatelessWidget {
           x: 3,
           barRods: [
             BarChartRodData(
-              toY: 11,
+              toY: 1750,
               gradient: _barsGradient,
             )
           ],
@@ -161,7 +161,7 @@ class _BarChart extends StatelessWidget {
           x: 4,
           barRods: [
             BarChartRodData(
-              toY: 10,
+              toY: 5000,
               gradient: _barsGradient,
             )
           ],
@@ -171,7 +171,7 @@ class _BarChart extends StatelessWidget {
           x: 5,
           barRods: [
             BarChartRodData(
-              toY: 10,
+              toY: 5700,
               gradient: _barsGradient,
             )
           ],
@@ -181,7 +181,7 @@ class _BarChart extends StatelessWidget {
           x: 6,
           barRods: [
             BarChartRodData(
-              toY: 6,
+              toY: 6000,
               gradient: _barsGradient,
             )
           ],
